@@ -39,6 +39,11 @@ func init() {
 	if err != nil {
 		log.Fatal("cannot load config:", err)
 	}
+
+	// fail if keyvault is not specified
+	if len(Cfg.KeyVault) <= 0 {
+		log.Fatal("KEYVAULT not specified. Aborting")
+	}
 }
 
 func LoadConfig(path string) (config Config, err error) {
