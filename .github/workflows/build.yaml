@@ -10,7 +10,7 @@ on:
 
 
 jobs:
-  container-job:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,4 +21,5 @@ jobs:
       - uses: actions/checkout@v1
       - name: build
         run: |
+          go mod init
           go build -o kv2get -v cmd/kv2env/main.go
