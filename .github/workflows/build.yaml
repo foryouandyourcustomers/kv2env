@@ -13,15 +13,18 @@ jobs:
         uses: actions/setup-go@v2
         with:
           go-version: 1.15.x
-      - uses: actions/checkout@v1
-    - name: Run GoReleaser
-      uses: goreleaser/goreleaser-action@v2
-      with:
-        # either 'goreleaser' (default) or 'goreleaser-pro'
-        distribution: goreleaser
-        version: latest
-        args: release --rm-dist
-        workdir: ./cmd/kv2env
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        CGO_ENABLED: 0
+
+      - name: checkout sources
+        uses: actions/checkout@v1
+
+      - name: Run GoReleaser
+        uses: goreleaser/goreleaser-action@v2
+        with:
+          # either 'goreleaser' (default) or 'goreleaser-pro'
+          distribution: goreleaser
+          version: latest
+          args: release --rm-dist
+          workdir: ./cmd/kv2env
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CGO_ENABLED: 0
