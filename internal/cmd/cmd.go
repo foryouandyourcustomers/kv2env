@@ -10,7 +10,7 @@ import (
 
 // Execute executes the root command.
 func Execute(cmd string, params []string) {
-	log.Debugf("Retrieve all keyvault secrets for keyvault: %s", config.Cfg.KeyVault)
+	log.Debugf("Retrieve all keyvault secrets in keyvault: %s", config.Cfg.KeyVault)
 	secrets, err := keyvault.GetKeyvaultEntries(config.Cfg.KeyVault)
 	if err != nil {
 		log.Fatal(err.Error())
